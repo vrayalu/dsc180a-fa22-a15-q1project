@@ -7,6 +7,7 @@ import pandas as pd
 
 from collections import defaultdict
 from src.models import weighted_threshold
+from src.models import girvan_newman
 
 
 
@@ -25,15 +26,12 @@ def calculate_accuracy(predictions: list, actual: dict) -> float:
         
     return np.sum(purities) / len(actual)
 
-def train_weighted(data):
-    weighted_threshold_predictions = weighted_threshold.WeightedThresholdCommunity(data).predict()
-    return weighted_threshold_predictions
-
 def get_result(data: nx.graph, ground_truth: dict):
     results = dict()
     
+    results["weighted_threshold"] = calculate_accuracy(weighted_threshold.WeightedThresholdCommunity(data).predict(), ground_truth)
     
-    results["weighted_threshold"] = calculate_accuracy(weighted_threshold_predictions, ground_truth)
+    results["girvan_newman"] = calculate_accuracy(girvan_newman.GirvanNewman(data).predict(), ground_truth)
     
     output = pd.DataFrame({"Accuracy": results})
     
