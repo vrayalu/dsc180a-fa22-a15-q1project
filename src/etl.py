@@ -17,6 +17,7 @@ def get_data():
     os.makedirs(path)
     file = open(file_path, "wb")
     file.write(response.content)
+    return file_path
 
 def edit_graphtype(filepath):
     with open(filepath, 'r') as file :
@@ -24,6 +25,7 @@ def edit_graphtype(filepath):
     filedata = filedata.replace('directed 1', 'multigraph 1')
     with open(filepath, 'w') as file:
         file.write(filedata)
+    return
 
 def read_graph(filepath):
     G = nx.read_gml(filepath)

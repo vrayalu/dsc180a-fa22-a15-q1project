@@ -3,6 +3,9 @@ import os
 from pathlib import Path
 sys.path.insert(0, 'src')
 
+from etl import get_data, edit_graphtype, read_graph
+from get_result import get_result 
+
 def main(targets):
     
     # Target `report`
@@ -28,7 +31,13 @@ def main(targets):
         
         command = 'cd ' + build_path + ' && jupyter ' + ' '.join(args1) + ' && cd ' + wd
         os.system(command) # Run build script
-        
+    if 'test' in targets:
+        filepath = get_data()
+        edit_graphtype(filepath)
+        graph, truth = read_graph(filepath)
+        print(get_result(graph, truth))
+
+
 
 if __name__ == '__main__':
     targets = sys.argv[1:]
