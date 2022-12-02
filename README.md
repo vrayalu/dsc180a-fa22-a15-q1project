@@ -1,4 +1,4 @@
-# DSC180A FA22 A13 Project
+# DSC180A FA22 A15 Project
 
 The report can be found in `bin/report.pdf`
 
