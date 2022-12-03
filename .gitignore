@@ -1,2 +1,6 @@
 .DS_Store
 bin/run.py
+
+data/
+
+src/__pycache__
