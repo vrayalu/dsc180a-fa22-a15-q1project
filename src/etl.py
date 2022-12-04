@@ -3,18 +3,20 @@ import requests
 import networkx as nx
 import pandas as pd
 
-def get_data():
+def get_data(is_notebook = False):
    
     url = "http://www.casos.cs.cmu.edu/computational_tools/datasets/external/polblogs/polblogs.gml"
     response = requests.get(url)
 
     directory = "data/"
     parent_dir = "./"
+    if is_notebook:
+        parent_dir = '../'
     filename = "polblogs.gml"
     path = os.path.join(parent_dir, directory)
     file_path = os.path.join(path, filename)
-
-    os.makedirs(path)
+    if not os.path.exists(path):
+        os.makedirs(path)
     file = open(file_path, "wb")
     file.write(response.content)
     return file_path
