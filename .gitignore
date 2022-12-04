@@ -1,5 +1,9 @@
 .DS_Store
 bin/run.py
+__pycache__
+.ipynb_checkpoints
+report.pdf
+data
 
 data/
 
