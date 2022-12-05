@@ -17,8 +17,9 @@ def get_data(is_notebook = False):
     file_path = os.path.join(path, filename)
     if not os.path.exists(path):
         os.makedirs(path)
-    file = open(file_path, "wb")
-    file.write(response.content)
+    if not os.path.exists(file_path):
+        file = open(file_path, "wb")
+        file.write(response.content)
     return file_path
 
 def edit_graphtype(filepath):

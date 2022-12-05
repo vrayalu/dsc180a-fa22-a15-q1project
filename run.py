@@ -29,6 +29,9 @@ def main(targets):
             '--Execute.Preprocessor.timeout=999999' # Prevent execution timeout
         ]
         
+        if 'quick' in targets:
+            args1 = args1[:-2]
+        
         command = 'cd ' + build_path + ' && jupyter ' + ' '.join(args1) + ' && cd ' + wd
         os.system(command) # Run build script
         
