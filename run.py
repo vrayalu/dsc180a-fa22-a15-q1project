@@ -39,7 +39,8 @@ def main(targets):
         edit_graphtype(filepath)
         graph, truth = read_graph(filepath)
         print(get_result(graph, truth))
-
+    if 'data' in targets:
+        get_data()
 
 
 if __name__ == '__main__':
