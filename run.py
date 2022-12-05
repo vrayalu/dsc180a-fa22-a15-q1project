@@ -34,8 +34,6 @@ def main(targets):
         
         command = 'cd ' + build_path + ' && jupyter ' + ' '.join(args1) + ' && cd ' + wd
         os.system(command) # Run build script
-        
-    # Target `test`
     if 'test' in targets:
         filepath = get_data()
         edit_graphtype(filepath)
